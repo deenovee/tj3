@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block title %} Welcome {% endblock %} {% block
+main %}
+<form class="login-form bg-light form-group" action="/login" method="POST">
+  <h1>Login</h1>
+  <input
+    type="username"
+    class="form-control"
+    name="username"
+    placeholder="username"
+    autocomplete="off"
+    required
+  />
+  <input
+    type="password"
+    class="form-control"
+    name="password"
+    placeholder="password"
+    autocomplete="off"
+    required
+  />
+  <button class="btn btn-secondary" type="submit">Login</button>
+  <p>Dont have an account? <a href="/register">Create Account</a></p>
+</form>
+
+{% endblock %}

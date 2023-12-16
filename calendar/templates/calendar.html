@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block title %} {{username}}'s {% endblock %} {%
+block main %}
+<h1 class="calendar-header">{{date.month}} Calendar</h1>
+<div class="calendar-table">
+  {% for day in range(days) %}
+  <div class="calendar-day">
+    <h1>{{date.month}} {{daily_data[day].day}}</h1>
+    <p>Trade Count: {{daily_data[day].trade_count}}</p>
+    <p>Net $: {{daily_data[day].dollar_change}}</p>
+    <p>Net %: {{daily_data[day].total_percentage}}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<!--<table class="calendar-table">
+<thead>
+    <th>Date</th>
+    <th>Trades</th>
+    <th>$$$</th>
+    <th>%</th>
+</thead>
+<tbody>
+{% for day in range(days)%}
+<tr>
+    <td>{{date.month}} {{daily_data[day].day}}</td>
+    <td>{{daily_data[day].trade_count}}</td>
+    <td>{{daily_data[day].dollar_change}}</td>
+    <td>{{daily_data[day].total_percentage}}</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>-->
+<!--{{daily_data}}-->
+<button id="back-to-top" class="btn btn-secondary" onclick="topFunction()">
+  Back To Top
+</button>
+<script>
+  // Get the button:
+  let mybutton = document.getElementById("back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+</script>
+{% endblock %}

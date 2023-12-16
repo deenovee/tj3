@@ -1,0 +1,81 @@
+.welcome {
+    margin-top:2rem;
+    text-align:center;
+    font-size:3rem;
+}
+.path-choice {
+    width:100%;
+    height:70vh;
+    margin-top:3rem;
+    display:flex;
+}
+
+.journal-path, .new-path, .calendar-path{
+    flex:1;
+}
+
+
+.journal-path-journal > button, .new-path-new > button, .calendar-path-cal > button {
+    width:100%;
+    height:70vh;
+    font-size:4rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+.path-span {
+    padding:1rem;
+    background-color:rgba(255,255,255, 0.85);
+    border-radius:5px;
+}
+
+.path-span:hover {
+    background-color:rgba(0,0,0,0.85);
+    color:white;
+}
+
+@media (max-width:1250px) {
+    .journal-path-journal > button, .new-path-new > button{
+        font-size:2.5rem
+    }
+    .calendar-path-cal > button{
+        font-size:2rem;
+    }
+    .calendar-span {
+        padding:1.35rem 1rem;
+    }
+}
+
+@media (max-width:700px) {
+    .calendar-span {
+        padding:3.25rem 1rem;
+    }
+}
+
+@media (max-width:550px) {
+    .path-choice {
+        width:100%;
+        position:static;
+    }
+    .path-choice {
+        width:100%;
+        height:20vh;
+        margin-top:3rem;
+        display:block;
+    }
+
+    .journal-path-journal > button, .new-path-new > button, .calendar-path-cal > button {
+        width:100%;
+        height:22vh;
+        font-size:2rem;
+    }
+
+    .journal-path, .new-path, .calendar-path{
+        width:100%;
+    }
+    .calendar-span{
+        padding:1rem;
+    }
+
+}

@@ -1,0 +1,220 @@
+{% extends "layout.html" %} {% block title %} {{username}}'s {% endblock %} {%
+block main %}
+<h1 class="entry-header">New Entry</h1>
+<form class="entry-form form-group" action="/new-entry" method="POST">
+  <div class="side-1">
+    <label class="date-open">Date Open</label>
+    <input
+      class="date-time form-control"
+      type="date"
+      name="date_open"
+      required
+    />
+
+    <label class="date-close">Date Close</label>
+    <input
+      class="date-time form-control"
+      type="date"
+      name="date_close"
+      required
+    />
+
+    <label class="time-open">Time Open</label>
+    <input
+      class="date-time form-control"
+      type="text"
+      name="time_open"
+      required
+    />
+
+    <label class="pair-selection">Pair</label>
+    <select name="pair_selection" class="form-control">
+      {% for pair in pairs %}
+      <option>{{pair}}</option>
+      {% endfor %}
+    </select>
+
+    <label class="pos-size">Position Size</label>
+    <input
+      type="number"
+      class="form-control"
+      name="pos_size"
+      placeholder="Position Size"
+      step="0.01"
+      required
+    />
+
+    <label class="direction">Direction</label>
+    <select
+      name="direction"
+      class="form-control"
+      vplaceholder="Direction"
+      required
+    >
+      <option>Long</option>
+      <option>Short</option>
+    </select>
+  </div>
+  <div class="side-2">
+    <label class="enter-price">Enter Price</label>
+    <input
+      type="number"
+      class="form-control"
+      name="enter_price"
+      placeholder="Entry Price"
+      step="0.00001"
+      required
+    />
+
+    <label class="stop-loss">Stop Loss</label>
+    <input
+      type="number"
+      class="form-control"
+      name="stop_loss"
+      placeholder="Stop Loss"
+      step="0.00001"
+      required
+    />
+
+    <label class="take-profit">Take Profit</label>
+    <input
+      type="number"
+      class="form-control"
+      name="take_profit"
+      placeholder="Take Profit"
+      step="0.00001"
+      required
+    />
+
+    <label class="exit-price">Exit Price</label>
+    <input
+      type="number"
+      class="form-control"
+      name="exit_price"
+      placeholder="Exit Price"
+      step="0.00001"
+      required
+    />
+
+    <label class="win-loss">Win/Loss</label>
+    <select name="win_loss" class="form-control">
+      <option name="Win">Win</option>
+      <option name="Loss">Loss</option>
+    </select>
+
+    <label class="dollar-amount">Dollar Amount(+/-)</label>
+    <input
+      type="number"
+      class="form-control"
+      name="dollar_amount"
+      placeholder="Dollars +-"
+      step="0.01"
+      required
+    />
+
+    <label class="strategy">Strategy</label>
+    <select
+      name="strategy"
+      class="form-control"
+      placeholder="Strategy"
+      required
+    >
+      <option>Accu Type 1</option>
+      <option>Accu Type 2</option>
+      <option>Accu Type 4</option>
+      <option>Distro Type 1</option>
+      <option>Distro Type 2</option>
+      <option>Distro Type 4</option>
+      <option>Re Accu</option>
+      <option>Re Distro</option>
+      <option>Extreme</option>
+      <option>BOS</option>
+      <option>Orderflow</option>
+      <option>Scalp</option>
+    </select>
+  </div>
+  <div class="side-3">
+    <label class="entry-type">Entry Type</label>
+    <select
+      name="entry_type"
+      class="form-control"
+      placeholder="Entry Type"
+      required
+    >
+      <option>0</option>
+      <option>50</option>
+      <option>80</option>
+    </select>
+
+    <label class="session-entry">Session Entry</label>
+    <select
+      name="session_entry"
+      class="form-control"
+      placeholder="Session Entry"
+      required
+    >
+      <option>Sydney</option>
+      <option>Asia</option>
+      <option>London</option>
+      <option>Crossover</option>
+      <option>New York</option>
+    </select>
+
+    <label class="session-exit">Session Exit</label>
+    <select
+      name="session_exit"
+      class="form-control"
+      placeholder="Session Exit"
+      required
+    >
+      <option>Sydney</option>
+      <option>Asia</option>
+      <option>London</option>
+      <option>Crossover</option>
+      <option>New York</option>
+    </select>
+
+    <label class="trend">Trend</label>
+    <select name="trend" class="form-control" placeholder="Trend" required>
+      <option>Up</option>
+      <option>Down</option>
+    </select>
+
+    <label class="day">Day</label>
+    <select name="day" class="form-control">
+      <option name="monday">Monday</option>
+      <option name="tuesday">Tuesday</option>
+      <option name="wednesday">Wednesday</option>
+      <option name="thursday">Thursday</option>
+      <option name="friday">Friday</option>
+      <option name="saturday">Saturday</option>
+      <option name="sunday">Sunday</option>
+    </select>
+
+    <label class="reason-for-loss">Reason For Loss</label>
+    <select
+      name="reason_for_loss"
+      class="form-control"
+      placeholder="Reason For Loss"
+      required
+    >
+      <option>Orderflow</option>
+      <option>Entered Too Early</option>
+      <option>Outside Trading Window</option>
+      <option>Low Probability</option>
+      <option>Bad/No Trade Mgmt</option>
+      <option>FOMO</option>
+      <option>Counter-Trend</option>
+      <option>Misread Structure</option>
+      <option>Spread</option>
+      <option>Not In Prem/Disc</option>
+      <option>Mindset</option>
+      <option>New Strategy</option>
+      <option>Overleverage</option>
+      <option>N/A</option>
+    </select>
+
+    <button class="btn new-entry-button" type="submit">Submit</button>
+  </div>
+</form>
+{% endblock %}

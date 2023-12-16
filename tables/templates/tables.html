@@ -1,0 +1,1244 @@
+{% extends "layout.html" %} {% block title %} {{username}}'s {% endblock %} {%
+block main %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h1 class="tables-header">{{table}} Table</h1>
+
+{% if table == "Session Entry" %}
+<div class="table-container">
+  <div class="sessions-table">
+    <div class="session-card">
+      <h1>Sydney</h1>
+      <p>Profit</p>
+      <p>{{data.Sydney_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Sydney_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Sydney_Pos + data.Sydney_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>Asia</h1>
+      <p>Profit</p>
+      <p>{{data.Asia_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Asia_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Asia_Pos + data.Asia_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>London</h1>
+      <p>Profit</p>
+      <p>{{data.London_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.London_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.London_Pos + data.London_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>Crossover</h1>
+      <p>Profit</p>
+      <p>{{data.Crossover_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Crossover_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Crossover_Pos + data.Crossover_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>New York</h1>
+      <p>Profit</p>
+      <p>{{data.NY_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.NY_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.NY_Pos + data.NY_Neg)|round(2)}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Session Exit" %}
+<div class="table-container">
+  <div class="sessions-table">
+    <div class="session-card">
+      <h1>Sydney</h1>
+      <p>Profit</p>
+      <p>{{data.Sydney_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Sydney_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Sydney_Pos + data.Sydney_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>Asia</h1>
+      <p>Profit</p>
+      <p>{{data.Asia_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Asia_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Asia_Pos + data.Asia_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>London</h1>
+      <p>Profit</p>
+      <p>{{data.London_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.London_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.London_Pos + data.London_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>Crossover</h1>
+      <p>Profit</p>
+      <p>{{data.Crossover_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Crossover_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Crossover_Pos + data.Crossover_Neg)|round(2)}}%</p>
+    </div>
+    <div class="session-card">
+      <h1>New York</h1>
+      <p>Profit</p>
+      <p>{{data.NY_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.NY_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.NY_Pos + data.NY_Neg)|round(2)}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Reason For Loss" %}
+<div class="table-container">
+  <div class="reasons-table">
+    <div class="reason">
+      <h1>Orderflow</h1>
+      <p>{{data.Orderflow}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Entered Too Early</h1>
+      <p>{{data.Entered_Early}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Outside Trading Window</h1>
+      <p>{{data.Outside_Window}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Low Probability</h1>
+      <p>{{data.Low_Prob}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Bad/No Trade Mgmt</h1>
+      <p>{{data.Mgmt}}%</p>
+    </div>
+    <div class="reason">
+      <h1>FOMO</h1>
+      <p>{{data.FOMO}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Counter-Trend</h1>
+      <p>{{data.Counter}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Misread Struct</h1>
+      <p>{{data.Misread}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Spread</h1>
+      <p>{{data.Spread}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Not In Prem/Disc</h1>
+      <p>{{data.Prem_Disc}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Mindset</h1>
+      <p>{{data.Mindset}}%</p>
+    </div>
+    <div class="reason">
+      <h1>New Strategy</h1>
+      <p>{{data.New_Strat}}%</p>
+    </div>
+    <div class="reason">
+      <h1>Overleverage</h1>
+      <p>{{data.Overleverage}}%</p>
+    </div>
+    <div class="reason">
+      <h1>N/A/Win</h1>
+      <p>{{data.N_A}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Pairs" %}
+<div class="table-container">
+  <div class="pairs-table">
+    <div class="pair">
+      <h1>AUD/CAD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.AUD_CAD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.AUD_CAD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.AUD_CAD_Pos + data.AUD_CAD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart1"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph0 = {{ graphJSON[0] | safe}};
+      Plotly.plot("chart1", graph0,{});
+    </script>
+
+    <div class="pair">
+      <h1>AUD/CHF</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.AUD_CHF_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.AUD_CHF_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.AUD_CHF_Pos + data.AUD_CHF_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart2"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph1 = {{ graphJSON[1] | safe}};
+      Plotly.plot("chart2", graph1,{});
+    </script>
+
+    <div class="pair">
+      <h1>AUD/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.AUD_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.AUD_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.AUD_JPY_Pos + data.AUD_JPY_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart3"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph2 = {{ graphJSON[2] | safe}};
+      Plotly.plot("chart3", graph2,{});
+    </script>
+
+    <div class="pair">
+      <h1>AUD/NZD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.AUD_NZD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.AUD_NZD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.AUD_NZD_Pos + data.AUD_NZD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart4"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph3 = {{ graphJSON[3] | safe}};
+      Plotly.plot("chart4", graph3,{});
+    </script>
+
+    <div class="pair">
+      <h1>AUD/USD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.AUD_USD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.AUD_USD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.AUD_USD_Pos + data.AUD_USD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart5"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph4 = {{ graphJSON[4] | safe}};
+      Plotly.plot("chart5", graph4,{});
+    </script>
+
+    <div class="pair">
+      <h1>CAD/CHF</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.CAD_CHF_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.CAD_CHF_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.CAD_CHF_Pos + data.CAD_CHF_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart6"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph5 = {{ graphJSON[5] | safe}};
+      Plotly.plot("chart6", graph5,{});
+    </script>
+
+    <div class="pair">
+      <h1>CAD/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.CAD_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.CAD_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.CAD_JPY_Pos + data.CAD_JPY_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart7"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph6 = {{ graphJSON[6] | safe}};
+      Plotly.plot("chart7", graph6,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/AUD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_AUD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_AUD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_AUD_Pos + data.EUR_AUD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart8"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph7 = {{ graphJSON[7] | safe}};
+      Plotly.plot("chart8", graph7,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/CAD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_CAD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_CAD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_CAD_Pos + data.EUR_CAD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart9"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph8 = {{ graphJSON[8] | safe}};
+      Plotly.plot("chart9", graph8,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/CHF</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_CHF_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_CHF_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_CHF_Pos + data.EUR_CHF_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart10"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph9 = {{ graphJSON[9] | safe}};
+      Plotly.plot("chart10", graph9,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/GBP</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_GBP_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_GBP_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_GBP_Pos + data.EUR_GBP_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart11"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph10 = {{ graphJSON[10] | safe}};
+      Plotly.plot("chart11", graph10,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_JPY_Pos + data.EUR_JPY_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart12"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph11 = {{ graphJSON[11] | safe}};
+      Plotly.plot("chart12", graph11,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/NZD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_NZD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_NZD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_NZD_Pos + data.EUR_NZD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart13"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph12 = {{ graphJSON[12] | safe}};
+      Plotly.plot("chart13", graph12,{});
+    </script>
+
+    <div class="pair">
+      <h1>EUR/USD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.EUR_USD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.EUR_USD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.EUR_USD_Pos + data.EUR_USD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart14"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph13 = {{ graphJSON[13] | safe}};
+      Plotly.plot("chart14", graph13,{});
+    </script>
+
+    <div class="pair">
+      <h1>GBP/AUD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.GBP_AUD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.GBP_AUD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.GBP_AUD_Pos + data.GBP_AUD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart15"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph14 = {{ graphJSON[14] | safe}};
+      Plotly.plot("chart15", graph14,{});
+    </script>
+
+    <div class="pair">
+      <h1>GBP/CAD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.GBP_CAD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.GBP_CAD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.GBP_CAD_Pos + data.GBP_CAD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart16"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph15 = {{ graphJSON[15] | safe}};
+      Plotly.plot("chart16", graph15,{});
+    </script>
+
+    <div class="pair">
+      <h1>GBP/CHF</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.GBP_CHF_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.GBP_CHF_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.GBP_CHF_Pos + data.GBP_CHF_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart17"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph16 = {{ graphJSON[16] | safe}};
+      Plotly.plot("chart17", graph16,{});
+    </script>
+
+    <div class="pair">
+      <h1>GBP/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.GBP_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.GBP_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.GBP_JPY_Pos + data.GBP_JPY_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart18"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph17 = {{ graphJSON[17] | safe}};
+      Plotly.plot("chart18", graph17,{});
+    </script>
+
+    <div class="pair">
+      <h1>GBP/NZD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.GBP_NZD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.GBP_NZD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.GBP_NZD_Pos + data.GBP_NZD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart19"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph18 = {{ graphJSON[18] | safe}};
+      Plotly.plot("chart19", graph18,{});
+    </script>
+
+    <div class="pair">
+      <h1>GBP/USD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.GBP_USD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.GBP_USD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.GBP_USD_Pos + data.GBP_USD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart20"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph19 = {{ graphJSON[19] | safe}};
+      Plotly.plot("chart20", graph19,{});
+    </script>
+
+    <div class="pair">
+      <h1>NZD/CAD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.NZD_CAD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.NZD_CAD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.NZD_CAD_Pos + data.NZD_CAD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart21"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph20 = {{ graphJSON[20] | safe}};
+      Plotly.plot("chart21", graph20,{});
+    </script>
+
+    <div class="pair">
+      <h1>NZD/CHF</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.NZD_CHF_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.NZD_CHF_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.NZD_CHF_Pos + data.NZD_CHF_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart22"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph21 = {{ graphJSON[21] | safe}};
+      Plotly.plot("chart22", graph21,{});
+    </script>
+
+    <div class="pair">
+      <h1>NZD/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.NZD_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.NZD_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.NZD_JPY_Pos + data.NZD_JPY_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart23"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph22 = {{ graphJSON[22] | safe}};
+      Plotly.plot("chart23", graph22,{});
+    </script>
+
+    <div class="pair">
+      <h1>NZD/USD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.NZD_USD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.NZD_USD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.NZD_USD_Pos + data.NZD_USD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart24"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph23 = {{ graphJSON[23] | safe}};
+      Plotly.plot("chart24", graph23,{});
+    </script>
+
+    <div class="pair">
+      <h1>USD/CAD</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.USD_CAD_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.USD_CAD_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.USD_CAD_Pos + data.USD_CAD_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart25"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph24 = {{ graphJSON[24] | safe}};
+      Plotly.plot("chart25", graph24,{});
+    </script>
+
+    <div class="pair">
+      <h1>USD/CHF</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.USD_CHF_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.USD_CHF_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.USD_CHF_Pos + data.USD_CHF_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart26"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph25 = {{ graphJSON[25] | safe}};
+      Plotly.plot("chart26", graph25,{});
+    </script>
+
+    <div class="pair">
+      <h1>USD/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.USD_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.USD_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.USD_JPY_Pos + data.USD_JPY_Neg)|round(2)}}%</p>
+    </div>
+
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart27"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph26 = {{ graphJSON[26] | safe}};
+      Plotly.plot("chart27", graph26,{});
+    </script>
+
+    <div class="pair">
+      <h1>CHF/JPY</h1>
+      <p class="profit">Profit</p>
+      <p>{{data.CHF_JPY_Pos}}%</p>
+      <p class="loss">Loss</p>
+      <p>{{data.CHF_JPY_Neg}}%</p>
+      <p class="net">Net</p>
+      <p>{{(data.CHF_JPY_Pos + data.CHF_JPY_Neg)|round(2)}}%</p>
+    </div>
+    <div>
+      <div class="card" style="width: 90%; margin: auto">
+        <div class="card-body">
+          <div id="chart28"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graph27 = {{ graphJSON[27] | safe}};
+      Plotly.plot("chart28", graph27,{});
+    </script>
+  </div>
+</div>
+
+{% endif %} {% if table == "Direction" %}
+<div class="table-container">
+  <div class="small-table">
+    <div class="small-card">
+      <h1>Long</h1>
+      <p>Profit</p>
+      <p>{{data.Long_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Long_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Long_Pos + data.Long_Neg)|round(2)}}%</p>
+    </div>
+    <div class="small-card">
+      <h1>Short</h1>
+      <p>Profit</p>
+      <p>{{data.Short_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Short_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Short_Pos + data.Short_Neg)|round(2)}}</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Trend" %}
+<div class="table-container">
+  <div class="small-table">
+    <div class="small-card">
+      <h1>Pro Trend</h1>
+      <p>Profit</p>
+      <p>{{data.Pro_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Pro_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Pro_Pos + data.Pro_Neg)|round(2)}}%</p>
+    </div>
+    <div class="small-card">
+      <h1>Counter Trend</h1>
+      <p>Profit</p>
+      <p>{{data.Counter_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Counter_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Counter_Pos + data.Counter_Neg)|round(2)}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Strategy" %}
+<div class="table-container">
+  <div class="strategy-table">
+    <div class="strategy-card">
+      <h1>ACCU 1</h1>
+      <p>Profit</p>
+      <p>{{data.A1_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.A1_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.A1_Pos + data.A1_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>ACCU 2</h1>
+      <p>Profit</p>
+      <p>{{data.A2_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.A2_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.A2_Pos + data.A2_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>ACCU 4</h1>
+      <p>Profit</p>
+      <p>{{data.A4_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.A4_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.A4_Pos + data.A4_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>DISTRO 1</h1>
+      <p>Profit</p>
+      <p>{{data.D1_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.D1_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.D1_Pos + data.D1_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>DISTRO 2</h1>
+      <p>Profit</p>
+      <p>{{data.D2_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.D2_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.D2_Pos + data.D2_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>DISTRO 4</h1>
+      <p>Profit</p>
+      <p>{{data.D4_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.D4_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.D4_Pos + data.D4_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>REACCU</h1>
+      <p>Profit</p>
+      <p>{{data.RA_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.RA_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.RA_Pos + data.RA_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>REDISTRO</h1>
+      <p>Profit</p>
+      <p>{{data.RD_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.RD_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.RD_Pos + data.RD_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>EXTREME</h1>
+      <p>Profit</p>
+      <p>{{data.X_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.X_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.X_Pos + data.X_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>BOS</h1>
+      <p>Profit</p>
+      <p>{{data.BOS_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.BOS_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.BOS_Pos + data.BOS_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>ORDERFLOW</h1>
+      <p>Profit</p>
+      <p>{{data.Order_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Order_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Order_Pos + data.Order_Neg)|round(2)}}%</p>
+    </div>
+    <div class="strategy-card">
+      <h1>SCALP</h1>
+      <p>Profit</p>
+      <p>{{data.Scalp_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Scalp_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Scalp_Pos + data.Scalp_Neg)|round(2)}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Day" %}
+<div class="table-container">
+  <div class="day-table">
+    <div class="day-card">
+      <h1>Sunday</h1>
+      <p>Profit</p>
+      <p>{{data.Sun_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Sun_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Sun_Pos + data.Sun_Neg)|round(2)}}%</p>
+    </div>
+    <div class="day-card">
+      <h1>Monday</h1>
+      <p>Profit</p>
+      <p>{{data.M_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.M_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.M_Pos + data.M_Neg)|round(2)}}%</p>
+    </div>
+    <div class="day-card">
+      <h1>Tuesday</h1>
+      <p>Profit</p>
+      <p>{{data.T_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.T_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.T_Pos + data.T_Neg)|round(2)}}%</p>
+    </div>
+    <div class="day-card">
+      <h1>Wednesday</h1>
+      <p>Profit</p>
+      <p>{{data.W_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.W_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.W_Pos + data.W_Neg)|round(2)}}%</p>
+    </div>
+    <div class="day-card">
+      <h1>Thursday</h1>
+      <p>Profit</p>
+      <p>{{data.Th_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Th_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Th_Pos + data.Th_Neg)|round(2)}}%</p>
+    </div>
+    <div class="day-card">
+      <h1>Friday</h1>
+      <p>Profit</p>
+      <p>{{data.F_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.F_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.F_Pos + data.F_Neg)|round(2)}}%</p>
+    </div>
+    <div class="day-card">
+      <h1>Saturday</h1>
+      <p>Profit</p>
+      <p>{{data.Sat_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Sat_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Sat_Pos + data.Sat_Neg)|round(2)}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %} {% if table == "Entry Type" %}
+<div class="table-container">
+  <div class="small-table">
+    <div class="small-card">
+      <h1>Zero</h1>
+      <p>Profit</p>
+      <p>{{data.Zero_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Zero_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Zero_Pos + data.Zero_Neg)|round(2)}}%</p>
+    </div>
+    <div class="small-card">
+      <h1>Fifty</h1>
+      <p>Profit</p>
+      <p>{{data.Fifty_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Fifty_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Fifty_Pos + data.Fifty_Neg)|round(2)}}%</p>
+    </div>
+    <div class="small-card">
+      <h1>Eighty</h1>
+      <p>Profit</p>
+      <p>{{data.Eighty_Pos}}%</p>
+      <p>Loss</p>
+      <p>{{data.Eighty_Neg}}%</p>
+      <p>Net</p>
+      <p>{{(data.Eighty_Pos + data.Eighty_Neg)|round(2)}}%</p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="width: 90%; margin: auto">
+    <div class="card-body">
+      <div id="chart"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graph = {{ graphJSON | safe}};
+  Plotly.plot("chart", graph,{});
+</script>
+
+{% endif %}
+
+<button id="back-to-top" class="btn btn-secondary" onclick="topFunction()">
+  Back To Top
+</button>
+<script>
+  // Get the button:
+  let mybutton = document.getElementById("back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+</script>
+
+{% endblock %}

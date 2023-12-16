@@ -1,0 +1,26 @@
+{% extends "layout.html" %} {% block title %} {{username}}'s {% endblock %} {%
+block main %}
+<h1 class="history-title">Trade History</h1>
+<div>
+  <h1 class="new-entry-header"><a href="/new-entry-option">New Entry +</a></h1>
+</div>
+<div class="trade-container">
+  <h1 class="trade-id">Trade ID</h1>
+  <p class="open-date">Open</p>
+  <p class="dollar-amount">$$$</p>
+  <a href="/journal"><button class="TJ-button btn btn-secondary">TJ</button></a>
+</div>
+{% for row in journal_data %}
+<form action="/edit" method="POST">
+  <div class="trade-container">
+    <input type="hidden" name="edit" value="{{row.trade_id}}" />
+    <h1 class="trade-id">{{row.trade_id}}</h1>
+    <p class="open-date">{{row.date_open}}</p>
+    <p class="dollar-amount">{{row.dollar_amount}}</p>
+    <button class="open-trade-button btn btn-secondary" type="submit">
+      Open*
+    </button>
+  </div>
+</form>
+
+{% endfor %} {% endblock %}

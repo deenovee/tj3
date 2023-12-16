@@ -1,0 +1,27 @@
+{% extends "home-layout.html" %} {% block title %} {{username}}'s {% endblock %}
+{% block main %}
+<h1 class="welcome">Welcome <br />{{username}}!</h1>
+<div class="path-choice">
+  <div class="new-path">
+    <a class="new-path-new" href="/new-entry"
+      ><button style="background-image: url('/static/3d.jpg')">
+        <div class="path-span">New Entry</div>
+      </button></a
+    >
+  </div>
+  <div class="journal-path">
+    <a class="journal-path-journal" href="/journal"
+      ><button style="background-image: url('/static/3d.jpg')">
+        <div class="path-span">View Journal</div>
+      </button></a
+    >
+  </div>
+  <div class="calendar-path">
+    <a class="calendar-path-cal" href="/date-picker"
+      ><button style="background-image: url('/static/3d.jpg')">
+        <div class="path-span calendar-span">Calendar</div>
+      </button></a
+    >
+  </div>
+</div>
+{% endblock %}
