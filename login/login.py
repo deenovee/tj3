@@ -24,6 +24,7 @@ def login():
         if not user or not check_password_hash(user["hash"], request.form.get("password")):
             return apology("Account not found", 404)
         # Remember which user has logged in
+        print(user)
         session["user_id"] = user["user_id"]
         # Redirect user to home page
         return redirect("/")

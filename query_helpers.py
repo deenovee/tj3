@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = MongoClient(os.getenv("MONGODB_URI"))
+client = MongoClient(os.environ.get("MONGO_DB_URI"))
 # get the database
 db = client.get_database("journal")
 journal_entries = db["journal_entry"]
