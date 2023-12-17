@@ -26,7 +26,6 @@ Config.init_app(app)
 app.config.from_object(Config)
 Session(app)
 
-print(tables_blueprint)
 app.register_blueprint(register_bp)
 app.register_blueprint(login_blueprint)
 app.register_blueprint(logout_blueprint)
@@ -45,8 +44,6 @@ app.register_blueprint(tables_blueprint)
 app.register_blueprint(date_picker_blueprint)
 app.register_blueprint(calendar_blueprint)
 
-
-
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
@@ -56,7 +53,6 @@ def errorhandler(e):
     # Listen for errors
     for code in default_exceptions:
         application.errorhandler(code)(errorhandler)
-
 
 if __name__ == "__main__":
     app.run()  
