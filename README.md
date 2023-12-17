@@ -15,20 +15,25 @@ Insert trades using a CSV file downloaded from MetaTrader
 Setup
 
 1. Clone the repository:
+
     ```bash
     git clone https://github.com/dylanpvillan/forex-trading-journal.git
     cd forex-trading-journal
 
 Create a virtual environment and activate it:
+
     ```bash
     python -m venv venv
     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
 Install dependencies:
+
     ```bash
     pip install -r requirements.txt
 
 Run the Flask application:
-    ```bash
+
+    ```bash 
     flask run
+
 Open a web browser and navigate to http://localhost:5000 to access the Forex Trading Journal web app.
